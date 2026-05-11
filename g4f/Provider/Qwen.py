@@ -15,6 +15,7 @@ import aiohttp
 
 from .base_provider import AsyncGeneratorProvider, ProviderModelMixin
 from .helper import get_last_user_message
+from ..providers.helper import format_prompt
 from .qwen.cookie_generator import generate_cookies
 from .. import debug
 from ..errors import RateLimitError, ResponseError, CloudflareError
@@ -119,7 +120,7 @@ class Qwen(AsyncGeneratorProvider, ProviderModelMixin):
     working = True
     active_by_default = True
     supports_stream = True
-    supports_message_history = False
+    supports_message_history = True
     image_cache = True
     _models_loaded = True
     image_models = image_models
